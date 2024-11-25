@@ -29,10 +29,30 @@
             return parent[x];
         }
 
+        public int PathSplit(int x)
+        {
+            while (parent[x] != x)
+            {
+                x = parent[x];
+                parent[x] = parent[parent[x]];
+            }
+            return x;
+        }
+
+        public int PathHalve(int x)
+        {
+            while (parent[x] != x)
+            {
+                parent[x] = parent[parent[x]];
+                x = parent[x];
+            }
+            return x;
+        }
+
         public void Union(int x, int y)
         {
-            int rootX = PathSplit(x);
-            int rootY = PathHalve(y);
+            int rootX = PathSplit(x); //Find(x)
+            int rootY = PathHalve(y); //Find(y)
 
             if (rootX == rootY)
                 return;
@@ -56,26 +76,6 @@
         public bool Connected(int x, int y)
         {
             return Find(x) == Find(y);
-        }
-
-        public int PathSplit(int x)
-        {
-            while (parent[x] != x)
-            {
-                x = parent[x];
-                parent[x] = parent[parent[x]];
-            }
-            return x;
-        }
-
-        public int PathHalve(int x)
-        {
-            while (parent[x] != x)
-            {
-                parent[x] = parent[parent[x]];
-                x = parent[x];
-            }
-            return x;
         }
     }
 
