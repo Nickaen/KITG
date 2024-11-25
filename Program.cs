@@ -1,4 +1,7 @@
-﻿namespace ConsoleApp4
+// Система непересекающихся множеств. Алгоритмы сжатия пути
+
+
+namespace ConsoleApp4
 {
     using System;
 
